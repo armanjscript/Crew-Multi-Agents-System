@@ -1,0 +1,21 @@
+# NVIDIA API Configuration
+NVIDIA_API_KEY=""
+NVIDIA_BASE_URL="https://integrate.api.nvidia.com/v1"
+
+# Weather API Configuration
+WEATHER_API_KEY=""
+
+# Google Serper API Configuration
+SERPER_API_KEY=""
+
+# SQLite Configuration
+DATABASE_PATH="data/chat_history.db"
+
+
+# IMPORTANT: CrewAI's LLM looks for these specific environment variables
+NVIDIA_NIM_API_KEY=""
+OPENAI_API_KEY=""  # CrewAI might default to OPENAI_API_KEY
+
+
+CREWAI_TRACING_ENABLED=false
+OTEL_SDK_DISABLED=true
