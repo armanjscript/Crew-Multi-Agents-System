@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # Crew Multi-Agent System
 
 A context-aware multi-agent conversational framework built on CrewAI that routes user queries through a classification pipeline to specialized agents for weather retrieval, web search, and general dialogue, with persistent SQLite-backed session memory.
@@ -40,17 +40,17 @@ The system follows a hub-and-spoke orchestration pattern. A single coordinator (
 
 ```mermaid
 flowchart TD
-    U[User Input] --> MC[MainCrew.process_query]
-    MC --> CL[Classifier Agent]
-    CL -->|step=weather| WA[Weather Agent]
-    CL -->|step=search| SA[Search Agent]
-    CL -->|step=general| GA[General Agent]
-    WA -->|WeatherOutput| WT[(WeatherAPI)]
-    SA -->|SearchOutput| ST[(Google Serper)]
+    U["User Input"] --> MC["MainCrew.process_query"]
+    MC --> CL["Classifier Agent"]
+    CL -->|step=weather| WA["Weather Agent"]
+    CL -->|step=search| SA["Search Agent"]
+    CL -->|step=general| GA["General Agent"]
+    WA --> WT[("WeatherAPI")]
+    SA --> ST[("Google Serper")]
     WA -->|context_info| GA
     SA -->|context_info| GA
-    GA --> FR[Final Response]
-    FR --> DB[(SQLite chat_history.db)]
+    GA --> FR["Final Response"]
+    FR --> DB[("SQLite chat_history.db")]
     DB --> U
 ```
 
@@ -70,7 +70,7 @@ sequenceDiagram
     U->>MC: user_query
     MC->>DB: load recent context (3 pairs)
     MC->>CL: classify(query, context)
-    CL-->>MC: ClassifierOutput{step, language, query}
+    CL-->>MC: ClassifierOutput step, language, query
     alt step == weather or search
         MC->>WA: run task with tool
         WA->>WA: call external API
@@ -536,6 +536,4 @@ The current implementation is intentionally minimal and makes several trade-offs
 
 ## 14. License
 
-The repository does not include a `LICENSE` file at the time of this writing. Under default GitHub terms, all rights are reserved by the repository owner. Anyone intending to fork, redistribute, or build upon this code should contact the maintainer to clarify licensing terms before doing so.
-```
-
+The repository does not include a `LICENSE` file at the time of this writing. Under default GitHub terms, all rights are reserved by the repository owner. Anyone intending to fork, redistribute, or build upon this code should contact the maintainer to clarify licensing terms before doing so.````
